@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: development.Dockerfile
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_NAME=test
+      - DB_USERNAME=test
+      - DB_PASSWORD=test
+    volumes:
+      - .:/usr/src/services/users
+      - /usrc/src/services/node_modules
+
+  db:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=test
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWROD=test
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data

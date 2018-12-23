@@ -1,0 +1,8 @@
+node_modules
+development.Dockerfile
+production.Dockerfile
+docker-compose.dev.yml
+docker-compose.yml
+postgres-data
+.git
+.dockerignore
