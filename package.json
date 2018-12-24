@@ -14,12 +14,13 @@
   "author": "Guillermo Lopez",
   "license": "MIT",
   "dependencies": {
+    "apollo-datasource": "^0.2.1",
     "apollo-server": "^2.3.1",
+    "cross-env": "^5.2.0",
     "graphql": "^14.0.2",
     "pg": "^7.7.1",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.42.0",
-    "cross-env": "^5.2.0"
+    "sequelize": "^4.42.0"
   },
   "devDependencies": {
     "eslint": "^5.11.0",

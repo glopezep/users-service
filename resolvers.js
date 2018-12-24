@@ -2,18 +2,34 @@
 
 const resolvers = {
   Query: {
-    user (parent, args, context, info) {
-      console.log('parent', parent)
-      console.log('args', args)
-      console.log('context', context)
-      console.log('info', info)
-      return {}
+    async user (parent, args, context, info) {
+      return context.dataSources.userApi.findOne({
+        where: { ...args }
+      })
     },
     users (parent, args, context, info) {
-      return []
+      return context.dataSources.userApi.findAll({})
     }
   },
-  Mutation: {}
+  Mutation: {
+    async createUser (parent, args, context, info) {
+      return context.dataSources.userApi.create(args.user)
+    },
+    async updateUser (parent, args, context, info) {
+      return context.dataSources.userApi.update(args)
+    },
+    async deleteUser (parent, args, context, info) {
+      return context.dataSources.userApi.destroy(args)
+    }
+  },
+  User: {
+    email (obj, args, context, info) {
+      return `${obj.dataValues.email.slice(0, 5)}@.....`
+    },
+    password (parent, args, context, info) {
+      return '.....'
+    }
+  }
 }
 
 module.exports = resolvers
