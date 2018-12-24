@@ -1,10 +1,10 @@
-FROM node:10-alpine
+FROM node:10.13.0
 
 WORKDIR /usr/src/services/users/
 
 COPY package* /usr/src/services/users/
 
-RUN npm install --only=production
+RUN npm cache clean --force && npm install --only=production
 
 COPY --from=builder . /usr/src/services/users/
 

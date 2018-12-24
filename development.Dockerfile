@@ -1,8 +1,8 @@
-FROM node:10
+FROM node:10.13.0
 
 WORKDIR /usr/src/services/users/
 
-COPY package* /user/src/services/users/
+COPY ./package* /usr/src/services/users/
 
 RUN npm install
 

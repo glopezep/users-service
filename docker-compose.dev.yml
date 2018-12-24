@@ -15,8 +15,8 @@ services:
       - DB_USERNAME=test
       - DB_PASSWORD=test
     volumes:
-      - .:/usr/src/services/users
-      - /usrc/src/services/node_modules
+      - .:/usr/src/services/users/
+      - /usr/src/services/users/node_modules/
 
   db:
     image: postgres

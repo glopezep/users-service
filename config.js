@@ -13,5 +13,6 @@ module.exports = {
       idle: 30000,
       acquire: 60000
     }
-  }
+  },
+  secret: process.env.SECRET || 's3cr3t'
 }

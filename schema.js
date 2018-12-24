@@ -12,6 +12,7 @@ const typeDefs = gql`
     createUser(user: UserInput!): User!
     updateUser(userId: Int, username: String, payload: UserInputUpdate!): User!
     deleteUser(userId: Int, username: String): User
+    login(username: String!, password: String): String
   }
 
   type User {

@@ -5,9 +5,10 @@ const { NotFound } = require('../errors')
 const utils = require('../utils')
 
 class UserAPI extends DataSource {
-  constructor ({ store }) {
+  constructor ({ store, secret }) {
     super()
     this.store = store
+    this.secret = secret
   }
 
   initialize (config) {
@@ -15,10 +16,14 @@ class UserAPI extends DataSource {
   }
 
   async create (user) {
+    user.password = await utils.encryptPassword(user.password)
+
     return this.store.user.create(user)
   }
 
   async findOrCreate (user) {
+    user.password = utils.encrypt(user.password)
+
     await this.store.user.findOrCreate(user)
   }
 
@@ -56,6 +61,24 @@ class UserAPI extends DataSource {
     const copy = utils.parse(user)
     await user.destroy()
     return copy
+  }
+
+  async login ({ username, password }) {
+    const user = await this.store.user.findOne({
+      username
+    })
+
+    if (!user) {
+      return NotFound('Username or password incorrect')
+    }
+
+    const auth = await utils.comparePassword(password, user.dataValues.password)
+
+    if (!auth) {
+      return NotFound('Username or password incorrect')
+    }
+
+    return utils.signToken({ username: user.dataValues.username }, this.secret, {})
   }
 }
 

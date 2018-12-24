@@ -20,6 +20,9 @@ const resolvers = {
     },
     async deleteUser (parent, args, context, info) {
       return context.dataSources.userApi.destroy(args)
+    },
+    async login (parent, args, context, info) {
+      return context.dataSources.userApi.login(args)
     }
   },
   User: {
