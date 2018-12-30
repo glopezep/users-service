@@ -69,16 +69,19 @@ class UserAPI extends DataSource {
     })
 
     if (!user) {
-      return NotFound('Username or password incorrect')
+      // return NotFound('Username or password incorrect')
+      return false
     }
 
     const auth = await utils.comparePassword(password, user.dataValues.password)
 
     if (!auth) {
-      return NotFound('Username or password incorrect')
+      // return NotFound('Username or password incorrect')
+      return false
     }
 
-    return utils.signToken({ username: user.dataValues.username }, this.secret, {})
+    return true
+    // return utils.signToken({ username: user.dataValues.username }, this.secret, {})
   }
 }
 
