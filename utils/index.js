@@ -1,5 +1,6 @@
 'use strict'
 
+const getLogger = require('./logger')
 const parse = require('./parse')
 const encryptPassword = require('./encrypt-password')
 const comparePassword = require('./compare-password')
@@ -11,5 +12,6 @@ module.exports = {
   encryptPassword,
   comparePassword,
   signToken,
-  verifyToken
+  verifyToken,
+  getLogger
 }

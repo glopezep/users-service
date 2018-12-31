@@ -2,9 +2,15 @@ FROM node:10.13.0
 
 WORKDIR /usr/src/services/users/
 
+COPY ./utils/package* /usr/src/services/users/utils/
+
+RUN cd /usr/src/services/users/utils/ && npm install
+
+COPY ./utils/ /usr/src/services/users/utils/
+
 COPY ./package* /usr/src/services/users/
 
-RUN npm install
+RUN cd /usr/src/services/users/ && npm install
 
 COPY . /usr/src/services/users/
 

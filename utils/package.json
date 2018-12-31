@@ -1,0 +1,14 @@
+{
+  "name": "@local/utils",
+  "version": "1.0.0",
+  "description": "Utilities",
+  "main": "index.js",
+  "author": "Guillermo Lopez",
+  "license": "MIT",
+  "dependencies": {
+    "bole": "^3.0.2",
+    "chalk": "^2.4.1",
+    "stream-file-archive": "^1.1.4",
+    "through2": "^3.0.0"
+  }
+}

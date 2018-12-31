@@ -16,6 +16,7 @@ services:
       - DB_PASSWORD=test
     volumes:
       - .:/usr/src/services/users/
+      - /usr/src/services/users/utils/
       - /usr/src/services/users/node_modules/
 
   db:
